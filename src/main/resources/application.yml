@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:sqlserver://launch-edge.database.windows.net:1433;database=LAUNCH_EDGE;
+    username: LaunchEdgeApp
+    password: ${DB_PASS}
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.SQLServerDialect
+    show-sql: true
