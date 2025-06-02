@@ -2,6 +2,7 @@ package org.launch.edge.controllers;
 
 import com.google.gson.Gson;
 import org.launch.edge.entities.User;
+import org.launch.edge.models.ResponseModel;
 import org.launch.edge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,9 +26,9 @@ public class LoginController {
     {
         if(userService.addUser(user.getUserName(), user.getPassword()))
         {
-            return new ResponseEntity<>("User Added Successfully", HttpStatus.OK);
+            return new ResponseEntity<>(new ResponseModel("User Added Successfully"), HttpStatus.OK);
         }
-        return new ResponseEntity<>("There was some error!", HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new ResponseModel("There was some error!"), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PostMapping(value = "/auth")
@@ -37,12 +38,12 @@ public class LoginController {
         {
             if(userService.authenticateUser(user.getUserName(), user.getPassword()))
             {
-                return new ResponseEntity<>("User Validated Successfully", HttpStatus.OK);
+                return new ResponseEntity<>(new ResponseModel("User Validated Successfully"), HttpStatus.OK);
             }
 
-            return new ResponseEntity<>("Invalid Password!", HttpStatus.UNAUTHORIZED);
+            return new ResponseEntity<>(new ResponseModel("Invalid Password!"), HttpStatus.UNAUTHORIZED);
         }
 
-        return new ResponseEntity<>("Username does not exist!", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(new ResponseModel("Username does not exist!"), HttpStatus.BAD_REQUEST);
     }
 }
