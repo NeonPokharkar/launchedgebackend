@@ -95,7 +95,7 @@
                     <release>24</release>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>org.projectLombok</groupId>
+                            <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                             <version>1.18.30</version>
                         </path>
